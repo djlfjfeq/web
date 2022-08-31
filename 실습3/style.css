@@ -1,0 +1,36 @@
+*{
+  box-sizing: border-box;
+}
+
+.subtitle {
+  display: block;
+  font-size: 12px;
+}
+
+.section {
+  text-align: center;
+}
+
+img {
+  width:100%; 
+  border-radius: 25px; 
+}
+
+.box1{
+  width:  auto;
+  height: auto;
+  margin: auto;
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content: center ;
+  align-content: space-around;
+
+}
+
+.box2{
+  width: 300px; 
+  padding: 10px; 
+}
+
+ 
