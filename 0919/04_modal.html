@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .modal-overlay {
+      /* position은 전체 화면 기준*/
+      position: fixed;
+      top: 0;
+      left: 0;
+      /* 배경색, 너비, 높이 */
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      height: 100vh;
+      /* 내부 내용 */
+      color: white;
+      justify-content: center;
+      align-items: center;
+      /* 기본은 안보이게 */
+      display: none;
+    }
+
+    .active {
+      display: flex;
+    }
+    .aa{
+      color: black;
+    }
+    
+    .bb{
+      color: blueviolet;
+    }
+    .cc{
+      color: coral;
+    }
+    .dd{
+      color: chartreuse;
+    }
+    .ee{
+      color: gold;
+    }
+
+    .imga{
+      display: block;
+    }
+    .imgb{
+      display: none;
+    }
+
+  </style>
+</head>
+<body>
+  <button id="modal-btn">모달 버튼</button> 
+  <div id="modal-content" class="modal-overlay">모달
+    <button id="modal-cancel-btn">취소 버튼</button>
+  </div>
+
+  <h1 id="a" class="aa">A</h1> 
+  <div id="aaa" class="imgb">
+    <h1 id="color" class="bb">사진</h1>
+    <img src="keep_the_ocean_clean-wallpaper-1280x800.jpg" id="iii" class="imga" style="width:100%; height:100%;">
+    <h2 id="b">B</h2>
+  </div>
+
+  <script>
+    // 모달 버튼이 클릭되면
+    const modalToggle = function() {
+      document.querySelector('#modal-content').classList.toggle('active')
+    }
+    
+    const modalBtn = document.querySelector('#modal-btn')
+    modalBtn.addEventListener('click',  modalToggle)
+
+    // 모달 취소 버튼이 클릭되면 
+    const modalCancelBtn = document.querySelector('#modal-cancel-btn')
+    modalCancelBtn.addEventListener('click', modalToggle)
+
+    // 모달 오버레이를 클릭하면
+    const modalOverlay = document.querySelector('#modal-content')
+    modalOverlay.addEventListener('click', modalToggle)
+  
+    const d = function() {
+      document.querySelector('#aaa').classList.toggle('imgb')
+      document.querySelector('#a').classList.toggle('dd')
+    }
+    
+    const ca = document.querySelector('#a')
+    ca.addEventListener('click', d)
+ 
+    const b = document.querySelector('#b')
+    b.addEventListener('click', function() {
+      document.querySelector('#aaa').classList.toggle('imga')
+      document.querySelector('#a').classList.toggle('aa')
+    })
+ 
+    const c = document.querySelector('#aaa')
+    c.addEventListener('click', d)
+ 
+  </script>
+</body>
+</html>
+
+ 
