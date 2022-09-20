@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>프로젝트</title>
+  <style>
+    .btn{ 
+      width: 100px;
+      height: 50px;
+      margin: 10px;
+    }
+
+    .result{
+      display: flex;
+      flex-direction: row;
+    }
+
+    .ball{
+      border-radius: 50%; 
+      width: 50px;
+      height: 50px; 
+      color:aliceblue;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      margin: 5px;
+    }
+    .text{
+      width: 50px;
+      height: 40px;
+      font-size: large;
+    }
+    .form{
+      float: left; 
+    }
+    .box{
+      display: flex;
+      flex-direction: row;
+      align-items: center; 
+      margin: 20px;
+    }
+  </style>
+  
+</head>
+
+<body> 
+  <div class="box">
+  <form id="form" action="gogo" class="form">
+    <input type="text" name="text" id="text" class="text"> 
+  </form>
+  <button id="btn" class="btn">번호</button> 
+  </div>
+
+  <h1 style="margin: 15px;" id="number"></h1> 
+  <div id="result" class="result"></div> 
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const button = document.querySelector('#btn')
+    const f = document.querySelector('#form')
+    const result = document.querySelector('#result')
+
+    button.addEventListener('click', function() { 
+      result.innerHTML = "" //지우기
+
+      const formData = new FormData(f)
+      const numbers = _.sampleSize(_.range(1,46), formData.get('text')) 
+      const h = document.querySelector('#number')
+      h.innerText = numbers
+  
+      for(i = 0; i<formData.get('text'); i++){
+      const ball = document.createElement('div')
+      ball.classList.add('ball') 
+      ball.innerText = numbers[i]
+      if(numbers[i]>=1 &&numbers[i]<=10){
+      ball.style.backgroundColor = 'gold'
+      }
+      else if(numbers[i]>=11 &&numbers[i]<=20){
+      ball.style.backgroundColor = 'blue'
+      }
+      else if(numbers[i]>=21 &&numbers[i]<=30){
+      ball.style.backgroundColor = 'red'
+      }
+      else if(numbers[i]>=31 &&numbers[i]<=40){
+      ball.style.backgroundColor = 'black'
+      }
+      else if(numbers[i]>=41 &&numbers[i]<=45){
+      ball.style.backgroundColor = 'green'
+      }   
+      result.appendChild(ball)
+      }  
+    }) 
+  </script>
+</body>
+</html>
